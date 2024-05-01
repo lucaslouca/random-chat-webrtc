@@ -1,0 +1,18 @@
+services:
+  #######################################
+  # FOR MYSQL PUBLISHING
+  #######################################
+  mysql:
+    image: mysql/mysql-server
+    container_name: chat_users_database
+    volumes:
+      - "./sito/db/:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+      - "33060:33060" #  X DevAPI and X DevAPI for C (XAPI) use the server xplugin
+    restart: always
+    environment:
+      - MYSQL_DATABASE=chat_users_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
